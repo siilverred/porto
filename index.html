@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Charlene — Portfolio</title>
+  <meta name="description" content="Portfolio of Charlene — Information Systems student, IT professional, AI enthusiast, and designer at Universitas Pelita Harapan." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Floating Pixel Particles -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo">
+      <span class="pixel-bracket">[</span>
+      <span class="logo-text">CHARLENE</span>
+      <span class="pixel-bracket">]</span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#hero" class="nav-link" data-section="hero">HOME</a></li>
+      <li><a href="#about" class="nav-link" data-section="about">ABOUT</a></li>
+      <li><a href="#projects" class="nav-link" data-section="projects">PROJECTS</a></li>
+      <li><a href="#experience" class="nav-link" data-section="experience">QUEST LOG</a></li>
+      <li><a href="#awards" class="nav-link" data-section="awards">AWARDS</a></li>
+      <li><a href="#contact" class="nav-link" data-section="contact">CONTACT</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-art">
+      <img src="assets/hero_bg.png" alt="Pixel art background" class="hero-bg-img" />
+      <div class="hero-overlay"></div>
+    </div>
+
+    <!-- Stars -->
+    <div class="stars-container" id="starsContainer"></div>
+
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-tag blink-slow">✦ AVAILABLE FOR OPPORTUNITIES ✦</div>
+        <h1 class="hero-title">
+          <span class="title-line-1">Hi, I'm</span>
+          <span class="title-name">Charlene<span class="cursor-blink">_</span></span>
+        </h1>
+        <p class="hero-subtitle">
+          <span class="typewriter" id="typewriter"></span>
+        </p>
+        <div class="hero-badges">
+          <span class="badge">🎓 UPH · Sistem Informasi</span>
+          <span class="badge">🤖 AI Engineer</span>
+          <span class="badge">🎨 Designer</span>
+          <span class="badge">☁️ Google Ambassador</span>
+        </div>
+        <div class="hero-actions">
+          <a href="#projects" class="btn-primary" id="heroProjectsBtn">
+            <span class="btn-icon">▶</span> VIEW PROJECTS
+          </a>
+          <a href="#contact" class="btn-secondary" id="heroContactBtn">
+            <span class="btn-icon">✉</span> CONTACT ME
+          </a>
+        </div>
+      </div>
+      <div class="hero-avatar">
+        <div class="avatar-frame">
+          <div class="avatar-glow"></div>
+          <img src="assets/pixel_avatar.png" alt="Charlene pixel avatar" class="avatar-img" />
+          <div class="avatar-level">
+            <span class="level-text">LVL 22</span>
+            <div class="exp-bar">
+              <div class="exp-fill"></div>
+            </div>
+          </div>
+        </div>
+        <div class="stat-card" id="statCard">
+          <div class="stat-row"><span>⚔️ ROLE</span><span>Full-Stack Dev</span></div>
+          <div class="stat-row"><span>🎨 CLASS</span><span>Designer</span></div>
+          <div class="stat-row"><span>🧠 SPEC</span><span>AI Engineer</span></div>
+          <div class="stat-row"><span>📍 LOC</span><span>Indonesia</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <span class="scroll-arrow">↓</span>
+      <span class="scroll-text">SCROLL TO EXPLORE</span>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section class="section about-section" id="about">
+    <div class="section-header">
+      <div class="section-tag">CHAPTER 01</div>
+      <h2 class="section-title">About Me</h2>
+      <div class="section-divider"><span>◆ ─────── ◆ ─────── ◆</span></div>
+    </div>
+
+    <div class="about-container">
+      <div class="about-text-block">
+        <div class="dialogue-box" id="dialogueBox">
+          <div class="dialogue-portrait">
+            <img src="assets/pixel_avatar.png" alt="Charlene" />
+          </div>
+          <div class="dialogue-content">
+            <div class="dialogue-name">Charlene</div>
+            <p class="dialogue-text" id="dialogueText">
+              Hey there, traveler! I'm an Information Systems student at Universitas Pelita Harapan, 
+              currently leveling up my skills in AI engineering and full-stack development. ✨
+            </p>
+            <div class="dialogue-next">▼ press to continue</div>
+          </div>
+        </div>
+
+        <div class="about-skills">
+          <h3 class="skills-title">SKILL TREE</h3>
+          <div class="skills-grid">
+            <div class="skill-item">
+              <div class="skill-icon">💻</div>
+              <div class="skill-info">
+                <span class="skill-name">Full-Stack Dev</span>
+                <div class="skill-bar"><div class="skill-fill" style="--fill: 80%"></div></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon">🤖</div>
+              <div class="skill-info">
+                <span class="skill-name">AI / ML</span>
+                <div class="skill-bar"><div class="skill-fill" style="--fill: 75%"></div></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon">🎨</div>
+              <div class="skill-info">
+                <span class="skill-name">UI/UX Design</span>
+                <div class="skill-bar"><div class="skill-fill" style="--fill: 85%"></div></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon">📊</div>
+              <div class="skill-info">
+                <span class="skill-name">Data Analysis</span>
+                <div class="skill-bar"><div class="skill-fill" style="--fill: 70%"></div></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon">☁️</div>
+              <div class="skill-info">
+                <span class="skill-name">Cloud / DevOps</span>
+                <div class="skill-bar"><div class="skill-fill" style="--fill: 65%"></div></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon">📣</div>
+              <div class="skill-info">
+                <span class="skill-name">Leadership</span>
+                <div class="skill-bar"><div class="skill-fill" style="--fill: 90%"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-inventory">
+        <h3 class="inventory-title">📦 INVENTORY</h3>
+        <div class="inventory-grid">
+          <div class="inv-item" title="Python">
+            <div class="inv-icon">🐍</div>
+            <span>Python</span>
+          </div>
+          <div class="inv-item" title="JavaScript">
+            <div class="inv-icon">⚡</div>
+            <span>JavaScript</span>
+          </div>
+          <div class="inv-item" title="TypeScript">
+            <div class="inv-icon">💙</div>
+            <span>TypeScript</span>
+          </div>
+          <div class="inv-item" title="React">
+            <div class="inv-icon">⚛️</div>
+            <span>React</span>
+          </div>
+          <div class="inv-item" title="FastAPI">
+            <div class="inv-icon">🚀</div>
+            <span>FastAPI</span>
+          </div>
+          <div class="inv-item" title="Figma">
+            <div class="inv-icon">🎨</div>
+            <span>Figma</span>
+          </div>
+          <div class="inv-item" title="Google Cloud">
+            <div class="inv-icon">☁️</div>
+            <span>GCP</span>
+          </div>
+          <div class="inv-item" title="IBM Watson">
+            <div class="inv-icon">🤖</div>
+            <span>IBM AI</span>
+          </div>
+          <div class="inv-item" title="SQL">
+            <div class="inv-icon">🗄️</div>
+            <span>SQL</span>
+          </div>
+          <div class="inv-item" title="Flutter">
+            <div class="inv-icon">📱</div>
+            <span>Flutter</span>
+          </div>
+          <div class="inv-item" title="Git">
+            <div class="inv-icon">📂</div>
+            <span>Git</span>
+          </div>
+          <div class="inv-item" title="Notion">
+            <div class="inv-icon">📝</div>
+            <span>Notion</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS SECTION -->
+  <section class="section projects-section" id="projects">
+    <div class="section-header">
+      <div class="section-tag">CHAPTER 02</div>
+      <h2 class="section-title">Quest Board</h2>
+      <p class="section-subtitle">Projects I've completed on my journey ⚔️</p>
+      <div class="section-divider"><span>◆ ─────── ◆ ─────── ◆</span></div>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- TalkieBuddy -->
+      <div class="project-card" id="projectTalkieBuddy" tabindex="0">
+        <div class="card-ribbon">RESEARCH</div>
+        <div class="card-img-wrap">
+          <img src="assets/project_talkiebuddy.png" alt="TalkieBuddy" class="card-img" />
+          <div class="card-img-overlay">
+            <span class="overlay-view">VIEW QUEST →</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="tag tag-ai">AI</span>
+            <span class="tag tag-health">HealthTech</span>
+            <span class="tag tag-research">Published</span>
+          </div>
+          <h3 class="card-title">TalkieBuddy</h3>
+          <p class="card-desc">An AI-powered communication assistant designed to support children with autism spectrum disorder. Published in SATESI 2025 journal conference.</p>
+          <div class="card-stats">
+            <span>⭐ SATESI 2025</span>
+            <span>📄 PKM-KI Funded</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- XiongMao -->
+      <div class="project-card" id="projectXiongMao" tabindex="0">
+        <div class="card-ribbon ribbon-blue">MOBILE</div>
+        <div class="card-img-wrap">
+          <img src="assets/project_xiongmao.png" alt="XiongMao" class="card-img" />
+          <div class="card-img-overlay">
+            <span class="overlay-view">VIEW QUEST →</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="tag tag-mobile">Mobile App</span>
+            <span class="tag tag-ai">AI</span>
+          </div>
+          <h3 class="card-title">XiongMao</h3>
+          <p class="card-desc">A panda-themed mobile application leveraging AI features to create an engaging and interactive user experience.</p>
+          <div class="card-stats">
+            <span>📱 Mobile</span>
+            <span>🐼 Cute UX</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kizuna -->
+      <div class="project-card" id="projectKizuna" tabindex="0">
+        <div class="card-ribbon ribbon-pink">SOCIAL</div>
+        <div class="card-img-wrap">
+          <img src="assets/project_kizuna.png" alt="Kizuna" class="card-img" />
+          <div class="card-img-overlay">
+            <span class="overlay-view">VIEW QUEST →</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="tag tag-social">Social</span>
+            <span class="tag tag-web">Web App</span>
+          </div>
+          <h3 class="card-title">Kizuna</h3>
+          <p class="card-desc">A connection-focused platform inspired by the Japanese concept of bonds (絆). Built to strengthen community and meaningful relationships through technology.</p>
+          <div class="card-stats">
+            <span>🤝 Community</span>
+            <span>✨ Meaningful UX</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pavey -->
+      <div class="project-card" id="projectPavey" tabindex="0">
+        <div class="card-ribbon ribbon-green">FINTECH</div>
+        <div class="card-img-wrap">
+          <img src="assets/project_pavey.png" alt="Pavey" class="card-img" />
+          <div class="card-img-overlay">
+            <span class="overlay-view">VIEW QUEST →</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="tag tag-fin">FinTech</span>
+            <span class="tag tag-ai">AI Chatbot</span>
+            <span class="tag tag-web">Full-Stack</span>
+          </div>
+          <h3 class="card-title">Pavey</h3>
+          <p class="card-desc">An intelligent financial management chatbot with real-time exchange rates, personalized budgeting advice, and AI-powered financial insights.</p>
+          <div class="card-stats">
+            <span>💰 FinTech</span>
+            <span>🤖 AI Powered</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE SECTION (Quest Log) -->
+  <section class="section experience-section" id="experience">
+    <div class="section-header">
+      <div class="section-tag">CHAPTER 03</div>
+      <h2 class="section-title">Quest Log</h2>
+      <p class="section-subtitle">My journey through experience & education 📖</p>
+      <div class="section-divider"><span>◆ ─────── ◆ ─────── ◆</span></div>
+    </div>
+
+    <div class="quest-container">
+
+      <!-- Experience Column -->
+      <div class="quest-column">
+        <div class="quest-column-header">
+          <span class="quest-icon">⚔️</span>
+          <h3>Experience</h3>
+        </div>
+
+        <div class="quest-item active">
+          <div class="quest-dot"></div>
+          <div class="quest-card">
+            <div class="quest-status">ACTIVE QUEST</div>
+            <h4 class="quest-title">IT Staff</h4>
+            <div class="quest-org">PT Sago Nauli</div>
+            <div class="quest-date">📅 May 2025 – Present</div>
+            <p class="quest-desc">Managing IT infrastructure and systems, ensuring smooth technical operations across the organization.</p>
+          </div>
+        </div>
+
+        <div class="quest-item">
+          <div class="quest-dot"></div>
+          <div class="quest-card">
+            <div class="quest-status completed">COMPLETED</div>
+            <h4 class="quest-title">HR Assistant</h4>
+            <div class="quest-org">PT Sago Nauli</div>
+            <div class="quest-date">📅 Jul – Oct 2025</div>
+            <p class="quest-desc">Supported HR operations, recruitment processes, and employee management documentation.</p>
+          </div>
+        </div>
+
+        <div class="quest-item active">
+          <div class="quest-dot"></div>
+          <div class="quest-card">
+            <div class="quest-status ambassador">AMBASSADOR</div>
+            <h4 class="quest-title">Google Student Ambassador</h4>
+            <div class="quest-org">Google</div>
+            <div class="quest-date">📅 Apr 2026 – Present</div>
+            <p class="quest-desc">Representing Google on campus, organizing tech events, workshops, and promoting Google developer products and communities.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education Column -->
+      <div class="quest-column">
+        <div class="quest-column-header">
+          <span class="quest-icon">📚</span>
+          <h3>Education</h3>
+        </div>
+
+        <div class="quest-item active">
+          <div class="quest-dot"></div>
+          <div class="quest-card">
+            <div class="quest-status">IN PROGRESS</div>
+            <h4 class="quest-title">S1 Information Systems</h4>
+            <div class="quest-org">Universitas Pelita Harapan</div>
+            <div class="quest-date">📅 2023 – 2027</div>
+            <p class="quest-desc">Studying the intersection of business and technology, with focus on AI, system design, and digital transformation.</p>
+          </div>
+        </div>
+
+        <div class="quest-item active">
+          <div class="quest-dot"></div>
+          <div class="quest-card">
+            <div class="quest-status ambassador">COHORT</div>
+            <h4 class="quest-title">AI Engineer Cohort</h4>
+            <div class="quest-org">Pijak × IBM SkillsBuild</div>
+            <div class="quest-date">📅 Feb 2026 – Present</div>
+            <p class="quest-desc">Intensive training in AI engineering, machine learning models, and IBM's enterprise AI toolset.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Volunteer Section -->
+    <div class="volunteer-section">
+      <div class="quest-column-header" style="justify-content:center; margin-bottom:1.5rem;">
+        <span class="quest-icon">🌟</span>
+        <h3>Volunteer & Leadership</h3>
+      </div>
+      <div class="volunteer-grid">
+        <div class="vol-card">
+          <div class="vol-icon">🌍</div>
+          <div class="vol-info">
+            <div class="vol-title">Core Team</div>
+            <div class="vol-org">GDG Live Indonesia</div>
+          </div>
+        </div>
+        <div class="vol-card">
+          <div class="vol-icon">🎨</div>
+          <div class="vol-info">
+            <div class="vol-title">Graphic Designer</div>
+            <div class="vol-org">Generation Girl Medan</div>
+          </div>
+        </div>
+        <div class="vol-card">
+          <div class="vol-icon">🎉</div>
+          <div class="vol-info">
+            <div class="vol-title">Graphic Designer</div>
+            <div class="vol-org">DevFest Medan</div>
+          </div>
+        </div>
+        <div class="vol-card">
+          <div class="vol-icon">🎓</div>
+          <div class="vol-info">
+            <div class="vol-title">Student Mentor</div>
+            <div class="vol-org">Universitas Pelita Harapan</div>
+          </div>
+        </div>
+        <div class="vol-card">
+          <div class="vol-icon">🖌️</div>
+          <div class="vol-info">
+            <div class="vol-title">Design Advisor</div>
+            <div class="vol-org">MPM UPH</div>
+          </div>
+        </div>
+        <div class="vol-card">
+          <div class="vol-icon">📡</div>
+          <div class="vol-info">
+            <div class="vol-title">Media & Communication</div>
+            <div class="vol-org">HMPSSI UPH</div>
+          </div>
+        </div>
+        <div class="vol-card">
+          <div class="vol-icon">🏛️</div>
+          <div class="vol-info">
+            <div class="vol-title">Design Committee</div>
+            <div class="vol-org">ICTIIA UPH</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARDS SECTION -->
+  <section class="section awards-section" id="awards">
+    <div class="section-header">
+      <div class="section-tag">CHAPTER 04</div>
+      <h2 class="section-title">Achievements</h2>
+      <p class="section-subtitle">Trophies collected along the way 🏆</p>
+      <div class="section-divider"><span>◆ ─────── ◆ ─────── ◆</span></div>
+    </div>
+
+    <div class="achievements-grid">
+
+      <div class="achievement-card gold">
+        <div class="achievement-glow"></div>
+        <div class="trophy-icon">🏆</div>
+        <div class="achievement-badge">NATIONAL</div>
+        <h4 class="achievement-title">PIMNAS 38 Finalist</h4>
+        <p class="achievement-desc">National Science Week competition finalist — one of the most prestigious student research competitions in Indonesia.</p>
+        <div class="achievement-stars">★★★★★</div>
+      </div>
+
+      <div class="achievement-card silver">
+        <div class="achievement-glow"></div>
+        <div class="trophy-icon">🥈</div>
+        <div class="achievement-badge">FUNDED</div>
+        <h4 class="achievement-title">PKM-KI Awardee 2025</h4>
+        <p class="achievement-desc">Funded Program Kreativitas Mahasiswa — Karya Inovatif awardee, recognizing innovative student research work.</p>
+        <div class="achievement-stars">★★★★☆</div>
+      </div>
+
+      <div class="achievement-card bronze">
+        <div class="achievement-glow"></div>
+        <div class="trophy-icon">🎖️</div>
+        <div class="achievement-badge">COMPETITION</div>
+        <h4 class="achievement-title">ELEFAITH Poster 2024</h4>
+        <p class="achievement-desc">Winner of the ELEFAITH Poster Competition 2024, showcasing design excellence and creative communication.</p>
+        <div class="achievement-stars">★★★★☆</div>
+      </div>
+
+      <div class="achievement-card publication">
+        <div class="achievement-glow"></div>
+        <div class="trophy-icon">📄</div>
+        <div class="achievement-badge">PUBLISHED</div>
+        <h4 class="achievement-title">TalkieBuddy Journal</h4>
+        <p class="achievement-desc">Research paper on TalkieBuddy AI communication assistant published at SATESI 2025 international conference.</p>
+        <div class="achievement-stars">★★★★★</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="section contact-section" id="contact">
+    <div class="section-header">
+      <div class="section-tag">CHAPTER 05</div>
+      <h2 class="section-title">Send a Message</h2>
+      <p class="section-subtitle">Let's connect and start a new adventure! 🌟</p>
+      <div class="section-divider"><span>◆ ─────── ◆ ─────── ◆</span></div>
+    </div>
+
+    <div class="contact-container">
+
+      <div class="contact-dialogue">
+        <div class="npc-box">
+          <div class="npc-avatar">
+            <img src="assets/pixel_avatar.png" alt="Charlene NPC" />
+          </div>
+          <div class="npc-speech">
+            <p>Ah, a traveler! You've reached the end of the quest log. Want to team up or just say hi? I'd love to hear from you! 💌</p>
+            <div class="npc-options">
+              <a href="https://wa.me/6281360551399" target="_blank" class="npc-option" id="whatsappBtn">
+                <span>📱</span> WhatsApp Me
+              </a>
+              <a href="https://instagram.com/siilvered" target="_blank" class="npc-option" id="instagramBtn">
+                <span>📸</span> @siilvered
+              </a>
+              <a href="https://linkedin.com/in/siilvered" target="_blank" class="npc-option" id="linkedinBtn">
+                <span>💼</span> LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap">
+        <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+          <div class="form-header">📬 SEND SCROLL</div>
+          <div class="form-group">
+            <label class="form-label" for="contactName">Your Name</label>
+            <input type="text" id="contactName" class="form-input" placeholder="Enter your name..." required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contactEmail">Email Address</label>
+            <input type="email" id="contactEmail" class="form-input" placeholder="your@email.com" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contactMessage">Message</label>
+            <textarea id="contactMessage" class="form-input form-textarea" placeholder="What's your quest?" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary btn-full" id="submitBtn">
+            <span class="btn-icon">⚔️</span> SEND QUEST
+          </button>
+          <div class="form-success" id="formSuccess">
+            ✨ Message sent! I'll reply soon, adventurer!
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-pixels">
+      <div class="pixel-row">
+        <span>█</span><span>░</span><span>█</span><span>░</span><span>█</span><span>░</span><span>█</span><span>░</span><span>█</span><span>░</span><span>█</span><span>░</span><span>█</span><span>░</span><span>█</span><span>░</span>
+      </div>
+    </div>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <span class="pixel-bracket">[</span>
+        <span class="logo-text">CHARLENE</span>
+        <span class="pixel-bracket">]</span>
+      </div>
+      <p class="footer-quote">"Every expert was once a beginner." ✨</p>
+      <p class="footer-copy">© 2026 Charlene · Made with 💜 & pixels</p>
+    </div>
+    <div class="footer-pixels bottom">
+      <div class="pixel-row">
+        <span>░</span><span>█</span><span>░</span><span>█</span><span>░</span><span>█</span><span>░</span><span>█</span><span>░</span><span>█</span><span>░</span><span>█</span><span>░</span><span>█</span><span>░</span><span>█</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Project Modal -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-box">
+      <button class="modal-close" id="modalClose" aria-label="Close modal">✕</button>
+      <div class="modal-content" id="modalContent"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
