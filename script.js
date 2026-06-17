@@ -49,11 +49,13 @@ function createStars() {
 
 /* ─── TYPEWRITER EFFECT ─── */
 const phrases = [
-  'Information Systems Student 🎓',
-  'AI Engineer in Training 🤖',
-  'UI/UX Designer 🎨',
-  'Google Student Ambassador ☁️',
-  'Problem Solver & Creator ✨',
+  'Information Systems Student',
+  'AI Engineer in Training',
+  'UI / UX Designer',
+  'Google Student Ambassador',
+  'Problem Solver & Creator',
+  'PKM-KI Funded Awardee',
+  'Google ADK Builder',
 ];
 
 let phraseIndex = 0;
@@ -148,32 +150,41 @@ function initScrollAnimations() {
   });
 }
 
-/* ─── SKILL BAR ANIMATION ─── */
+/* ─── TECH TAG HOVER (replaces skill bars) ─── */
 function initSkillBars() {
-  const skillObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const fills = entry.target.querySelectorAll('.skill-fill');
-        fills.forEach(fill => {
-          const target = fill.style.getPropertyValue('--fill');
-          fill.style.width = '0%';
-          setTimeout(() => { fill.style.width = target; }, 300);
-        });
-        skillObserver.unobserve(entry.target);
-      }
-    });
+  // Tech tags now replace skill bars — animate them in on scroll
+  const techSection = document.querySelector('.tech-tags');
+  if (!techSection) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      const tags = techSection.querySelectorAll('.tech-tag');
+      tags.forEach((tag, i) => {
+        setTimeout(() => {
+          tag.style.opacity = '1';
+          tag.style.transform = 'translateY(0)';
+        }, i * 60);
+      });
+      observer.disconnect();
+    }
   }, { threshold: 0.3 });
 
-  const skillsSection = document.querySelector('.skills-grid');
-  if (skillsSection) skillObserver.observe(skillsSection);
+  const tags = techSection.querySelectorAll('.tech-tag');
+  tags.forEach(tag => {
+    tag.style.opacity = '0';
+    tag.style.transform = 'translateY(10px)';
+    tag.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+  });
+
+  observer.observe(techSection);
 }
 
 /* ─── DIALOGUE BOX ─── */
 const dialogues = [
-  "Hey there, traveler! I'm an Information Systems student at Universitas Pelita Harapan, currently leveling up my skills in AI engineering and full-stack development. ✨",
-  "I'm passionate about building tech that actually helps people — from AI tools for autism support to smart financial chatbots. 💙",
-  "When I'm not coding, you'll find me designing, mentoring fellow students, or contributing to communities like GDG Live Indonesia and Generation Girl. 🌍",
-  "I believe technology should be inclusive, beautiful, and impactful. Let's build something amazing together! 🚀",
+  "Hey there, traveler! I'm an Information Systems student at Universitas Pelita Harapan, currently leveling up my skills in AI engineering and full-stack development. Click to read more.",
+  "I'm passionate about building tech that actually helps people — from AI-powered dolls for speech delay support to smart travel rerouting platforms.",
+  "When I'm not coding, you'll find me designing, mentoring fellow students, or contributing to communities like GDG Live Indonesia and Generation Girl.",
+  "I believe technology should be inclusive, beautiful, and impactful. Let's build something amazing together!",
 ];
 
 let dialogueIndex = 0;
@@ -199,48 +210,68 @@ function initDialogue() {
 const projectData = {
   projectTalkieBuddy: {
     title: 'TalkieBuddy',
-    emoji: '🗣️',
-    tags: ['AI', 'HealthTech', 'Research'],
-    desc: `TalkieBuddy is an AI-powered communication assistant designed to support children with Autism Spectrum Disorder (ASD). 
-
-The app uses natural language processing and emotion recognition to facilitate smoother communication for children who struggle with verbal and social interactions. 
-
-It was developed as part of PKM-KI (Program Kreativitas Mahasiswa — Karya Inovatif) and successfully received national funding. The research was later published at the SATESI 2025 international conference, and the team reached the finals of PIMNAS 38.`,
-    highlights: ['📄 Published at SATESI 2025', '🏆 PIMNAS 38 Finalist', '💰 PKM-KI Funded Awardee'],
-    tech: ['Python', 'NLP', 'Machine Learning', 'Mobile Dev'],
+    label: 'AI / IoT · HealthTech',
+    team: true,
+    tags: ['AI', 'IoT', 'HealthTech', 'Published'],
+    desc: `TalkieBuddy is a smart AI-powered doll designed to support children with speech delay (keterlambatan bicara). Using a combination of IoT hardware and Artificial Intelligence, the doll provides adaptive verbal interaction — responding to a child's voice, processing it, and generating appropriate audio responses to stimulate speech development.\n\nParents can monitor and track their child's speech progress through a companion mobile app, giving data-driven insights into communication development. Developed using User-Centered Design (UCD) methodology to ensure the product meets the actual needs of children and families.\n\nThis project was developed as part of PKM-KI (Program Kreativitas Mahasiswa — Karya Inovatif), received national funding, reached the finals of PIMNAS 38, and the research paper was published at SATESI 2025.`,
+    highlights: [
+      'PIMNAS 38 National Finalist',
+      'PKM-KI Funded Awardee 2025',
+      'Published at SATESI 2025',
+      'Team-based collaboration',
+    ],
+    doi: 'https://doi.org/10.54259/satesi.v5i2.5769',
+    tech: ['IoT Hardware', 'Python', 'AI / NLP', 'Mobile App', 'User-Centered Design'],
     color: '#b48ef0',
   },
   projectXiongMao: {
     title: 'XiongMao',
-    emoji: '🐼',
+    label: 'Mobile App · AI',
+    team: true,
     tags: ['Mobile App', 'AI'],
-    desc: `XiongMao (熊猫 — meaning "panda" in Mandarin) is a charming mobile application that combines an adorable panda theme with AI-powered features.
-
-The app provides an engaging and interactive experience for users, blending functionality with a delightful visual design. It showcases the intersection of cute UX/UI design and practical AI integration.`,
-    highlights: ['📱 Mobile Application', '🤖 AI-Powered Features', '🎨 Delightful UI Design'],
+    desc: `XiongMao (熊猫 — "panda" in Mandarin) is a mobile application featuring a panda theme with integrated AI functionality. It blends a charming, delightful UI design with practical AI-powered features to create an engaging user experience.`,
+    highlights: [
+      'Mobile Application',
+      'AI-Powered Features',
+      'Delightful Panda-themed UI',
+      'Team-based collaboration',
+    ],
+    doi: null,
     tech: ['Flutter', 'Dart', 'AI Integration', 'Figma'],
     color: '#7ec8e3',
   },
   projectKizuna: {
     title: 'Kizuna',
-    emoji: '🤝',
-    tags: ['Social', 'Web App'],
-    desc: `Kizuna (絆) is inspired by the Japanese word meaning "bond" or "connection." It's a community-focused platform designed to strengthen meaningful relationships through thoughtful technology.
-
-The platform was built with the vision of creating authentic digital spaces where people can form and maintain genuine connections — moving beyond surface-level social media interactions.`,
-    highlights: ['🌐 Community Platform', '💜 Human-Centered Design', '🔗 Connection-Focused'],
-    tech: ['React', 'Node.js', 'MongoDB', 'Socket.IO'],
+    label: 'Google ADK · Multi-Agent AI',
+    team: true,
+    tags: ['Google ADK', 'Multi-Agent AI', 'Productivity'],
+    desc: `Kizuna is an AI-powered productivity workspace built on Google ADK (Agent Development Kit) that turns natural-language requests into actions across Notion, Todoist, and Google Calendar.\n\nIts multi-agent architecture routes each request through specialized agents for intent detection, note extraction, task management, scheduling, conflict resolution, prioritization, and digests — so users can manage work conversationally without switching between apps.\n\nBuilt during a hackathon/AI competition as a team collaboration.`,
+    highlights: [
+      'Google ADK Multi-Agent Architecture',
+      'Integrates Notion, Todoist, Google Calendar',
+      'Natural-language task management',
+      'Team-based collaboration',
+    ],
+    doi: null,
+    tech: ['Google ADK', 'Python', 'Notion API', 'Todoist API', 'Google Calendar API'],
     color: '#f0a8d0',
   },
   projectPavey: {
     title: 'Pavey',
-    emoji: '💰',
-    tags: ['FinTech', 'AI Chatbot', 'Full-Stack'],
-    desc: `Pavey is an intelligent financial management chatbot that helps users take control of their finances. It provides real-time currency exchange rates, personalized budgeting advice, and AI-powered financial insights.
-
-Built with a Python FastAPI backend and React TypeScript frontend, Pavey integrates AI to understand user spending patterns and provide actionable financial recommendations in a conversational interface.`,
-    highlights: ['💬 AI-Powered Chatbot', '💱 Real-time Exchange Rates', '📊 Smart Budgeting'],
-    tech: ['Python', 'FastAPI', 'React', 'TypeScript', 'AI/LLM'],
+    label: 'Travel AI · PWA',
+    team: true,
+    tags: ['Travel AI', 'Gemini 2.0', 'PWA', 'Full-Stack'],
+    desc: `Pavey is an AI travel platform that performs dynamic itinerary rerouting in real time when bad weather or overcrowding disrupts travel plans. When the AI detects a problem location, it instantly suggests alternative routes that are still aligned with the user's personal preferences.\n\nBuilt as a Progressive Web App (PWA) using React + FastAPI + Supabase for seamless access without app installation. Leverages Gemini 2.0 Flash for AI reasoning, Cosine Similarity for preference matching, OpenWeather API for live weather data, and Google Places API for venue intelligence.\n\nDeveloped under the Pijak × IBM SkillsBuild AI cohort program as a team project.`,
+    highlights: [
+      'Dynamic AI rerouting for disrupted travel',
+      'Gemini 2.0 Flash + Cosine Similarity',
+      'OpenWeather API + Google Places API',
+      'PWA: React + FastAPI + Supabase',
+      'Pijak × IBM SkillsBuild cohort',
+      'Team-based collaboration',
+    ],
+    doi: null,
+    tech: ['React', 'FastAPI', 'Supabase', 'Gemini 2.0', 'OpenWeather API', 'Google Places API'],
     color: '#a8e6d0',
   },
 };
@@ -264,21 +295,38 @@ function initProjectModals() {
     const data = projectData[id];
     if (!data) return;
 
+    const doiBlock = data.doi ? `
+      <a href="${data.doi}" target="_blank" rel="noopener" style="
+        display:inline-flex; align-items:center; gap:6px;
+        font-family:var(--pixel-font); font-size:0.3rem;
+        color:var(--accent-mint); border:1px solid var(--accent-mint);
+        padding:4px 8px; margin:0.5rem 0 0.75rem; letter-spacing:0.5px;
+        text-decoration:none; line-height:1.6;
+      ">DOI: ${data.doi.replace('https://doi.org/','')} &rarr;</a>` : '';
+
+    const teamBadge = data.team ? `<span style="
+      font-family:var(--pixel-font); font-size:0.3rem; padding:3px 8px;
+      border:1px solid var(--accent-mint); color:var(--accent-mint);
+      letter-spacing:0.5px; margin-left:0.25rem;
+    ">TEAM PROJECT</span>` : '';
+
     content.innerHTML = `
       <div style="border-bottom: 2px solid var(--border-pixel); padding-bottom: 1rem; margin-bottom: 1.5rem;">
-        <div style="font-size: 3rem; margin-bottom: 0.5rem;">${data.emoji}</div>
         <h2 style="font-family: var(--pixel-font); font-size: 0.9rem; color: ${data.color}; letter-spacing: 2px; line-height: 1.5; margin-bottom: 0.5rem;">${data.title}</h2>
-        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <div style="font-family:var(--pixel-font); font-size:0.35rem; color:var(--text-muted); margin-bottom:0.5rem; letter-spacing:1px;">${data.label}</div>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items:center;">
           ${data.tags.map(t => `<span style="font-family: var(--pixel-font); font-size: 0.3rem; padding: 3px 8px; border: 1px solid ${data.color}; color: ${data.color}; letter-spacing: 0.5px;">${t}</span>`).join('')}
+          ${teamBadge}
         </div>
       </div>
       <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.9; margin-bottom: 1.5rem; white-space: pre-line;">${data.desc}</p>
       <div style="margin-bottom: 1.5rem;">
-        <div style="font-family: var(--pixel-font); font-size: 0.45rem; color: var(--accent-gold); margin-bottom: 0.75rem; letter-spacing: 1px;">✦ HIGHLIGHTS</div>
+        <div style="font-family: var(--pixel-font); font-size: 0.45rem; color: var(--accent-gold); margin-bottom: 0.75rem; letter-spacing: 1px;">* HIGHLIGHTS</div>
         ${data.highlights.map(h => `<div style="padding: 6px 0; border-bottom: 1px solid var(--border-pixel); font-size: 0.85rem; color: var(--text-primary);">${h}</div>`).join('')}
+        ${doiBlock}
       </div>
       <div>
-        <div style="font-family: var(--pixel-font); font-size: 0.45rem; color: var(--accent-mint); margin-bottom: 0.75rem; letter-spacing: 1px;">🛠 TECH STACK</div>
+        <div style="font-family: var(--pixel-font); font-size: 0.45rem; color: var(--accent-mint); margin-bottom: 0.75rem; letter-spacing: 1px;">TECH STACK</div>
         <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
           ${data.tech.map(t => `<span style="font-family: var(--pixel-font); font-size: 0.35rem; padding: 4px 10px; background: var(--bg-deep); border: 1px solid var(--border-pixel); color: var(--text-secondary);">${t}</span>`).join('')}
         </div>
@@ -311,7 +359,7 @@ function handleSubmit(e) {
   const btn = document.getElementById('submitBtn');
   const success = document.getElementById('formSuccess');
 
-  btn.textContent = '⏳ SENDING...';
+  btn.textContent = '... SENDING';
   btn.disabled = true;
 
   setTimeout(() => {
@@ -411,7 +459,7 @@ function initSectionReveal() {
 /* ─── COPY TO CLIPBOARD ─── */
 function copyToClipboard(text) {
   navigator.clipboard.writeText(text).then(() => {
-    showToast('📋 Copied!');
+    showToast('Copied!');
   });
 }
 

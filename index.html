@@ -23,12 +23,12 @@
       <span class="pixel-bracket">]</span>
     </div>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#hero" class="nav-link" data-section="hero">HOME</a></li>
-      <li><a href="#about" class="nav-link" data-section="about">ABOUT</a></li>
-      <li><a href="#projects" class="nav-link" data-section="projects">PROJECTS</a></li>
+      <li><a href="#hero"       class="nav-link" data-section="hero">HOME</a></li>
+      <li><a href="#about"      class="nav-link" data-section="about">ABOUT</a></li>
+      <li><a href="#projects"   class="nav-link" data-section="projects">PROJECTS</a></li>
       <li><a href="#experience" class="nav-link" data-section="experience">QUEST LOG</a></li>
-      <li><a href="#awards" class="nav-link" data-section="awards">AWARDS</a></li>
-      <li><a href="#contact" class="nav-link" data-section="contact">CONTACT</a></li>
+      <li><a href="#awards"     class="nav-link" data-section="awards">AWARDS</a></li>
+      <li><a href="#contact"    class="nav-link" data-section="contact">CONTACT</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
       <span></span><span></span><span></span>
@@ -41,8 +41,6 @@
       <img src="assets/hero_bg.png" alt="Pixel art background" class="hero-bg-img" />
       <div class="hero-overlay"></div>
     </div>
-
-    <!-- Stars -->
     <div class="stars-container" id="starsContainer"></div>
 
     <div class="hero-content">
@@ -63,19 +61,20 @@
         </div>
         <div class="hero-actions">
           <a href="#projects" class="btn-primary" id="heroProjectsBtn">
-            <span class="btn-icon">▶</span> VIEW PROJECTS
+            <span>▶</span> VIEW PROJECTS
           </a>
           <a href="#contact" class="btn-secondary" id="heroContactBtn">
-            <span class="btn-icon">✉</span> CONTACT ME
+            <span>✉</span> CONTACT ME
           </a>
         </div>
       </div>
+
       <div class="hero-avatar">
         <div class="avatar-frame">
           <div class="avatar-glow"></div>
           <img src="assets/pixel_avatar.png" alt="Charlene pixel avatar" class="avatar-img" />
           <div class="avatar-level">
-            <span class="level-text">LVL 22</span>
+            <span class="level-text">LVL 20</span>
             <div class="exp-bar">
               <div class="exp-fill"></div>
             </div>
@@ -113,112 +112,62 @@
           <div class="dialogue-content">
             <div class="dialogue-name">Charlene</div>
             <p class="dialogue-text" id="dialogueText">
-              Hey there, traveler! I'm an Information Systems student at Universitas Pelita Harapan, 
-              currently leveling up my skills in AI engineering and full-stack development. ✨
+              Hey there, traveler! I'm an Information Systems student at Universitas Pelita Harapan,
+              leveling up in AI engineering and full-stack development. Click to read more.
             </p>
-            <div class="dialogue-next">▼ press to continue</div>
+            <div class="dialogue-next">▼ click to continue</div>
           </div>
         </div>
 
-        <div class="about-skills">
-          <h3 class="skills-title">SKILL TREE</h3>
-          <div class="skills-grid">
-            <div class="skill-item">
-              <div class="skill-icon">💻</div>
-              <div class="skill-info">
-                <span class="skill-name">Full-Stack Dev</span>
-                <div class="skill-bar"><div class="skill-fill" style="--fill: 80%"></div></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon">🤖</div>
-              <div class="skill-info">
-                <span class="skill-name">AI / ML</span>
-                <div class="skill-bar"><div class="skill-fill" style="--fill: 75%"></div></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon">🎨</div>
-              <div class="skill-info">
-                <span class="skill-name">UI/UX Design</span>
-                <div class="skill-bar"><div class="skill-fill" style="--fill: 85%"></div></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon">📊</div>
-              <div class="skill-info">
-                <span class="skill-name">Data Analysis</span>
-                <div class="skill-bar"><div class="skill-fill" style="--fill: 70%"></div></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon">☁️</div>
-              <div class="skill-info">
-                <span class="skill-name">Cloud / DevOps</span>
-                <div class="skill-bar"><div class="skill-fill" style="--fill: 65%"></div></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon">📣</div>
-              <div class="skill-info">
-                <span class="skill-name">Leadership</span>
-                <div class="skill-bar"><div class="skill-fill" style="--fill: 90%"></div></div>
-              </div>
-            </div>
+        <!-- Tech Stack -->
+        <div class="tech-stack-section">
+          <h3 class="inventory-title">📦 TECH STACK</h3>
+          <div class="tech-tags">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">TypeScript</span>
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">FastAPI</span>
+            <span class="tech-tag">Flutter</span>
+            <span class="tech-tag">Figma</span>
+            <span class="tech-tag">Google Cloud</span>
+            <span class="tech-tag">IBM AI</span>
+            <span class="tech-tag">SQL</span>
+            <span class="tech-tag">Git</span>
+            <span class="tech-tag">Notion</span>
+            <span class="tech-tag">Supabase</span>
+            <span class="tech-tag">Google ADK</span>
+            <span class="tech-tag">Gemini API</span>
           </div>
         </div>
       </div>
 
       <div class="about-inventory">
-        <h3 class="inventory-title">📦 INVENTORY</h3>
-        <div class="inventory-grid">
-          <div class="inv-item" title="Python">
-            <div class="inv-icon">🐍</div>
-            <span>Python</span>
+        <h3 class="inventory-title">🏅 CERTIFICATIONS</h3>
+        <div class="cert-list">
+          <div class="cert-item">
+            <div class="cert-icon">☁️</div>
+            <div class="cert-info">
+              <div class="cert-title">Azure AI Engineer Associate</div>
+              <div class="cert-org">Microsoft Certified</div>
+              <div class="cert-date">Issued Mar 2026</div>
+            </div>
           </div>
-          <div class="inv-item" title="JavaScript">
-            <div class="inv-icon">⚡</div>
-            <span>JavaScript</span>
+          <div class="cert-item">
+            <div class="cert-icon">📮</div>
+            <div class="cert-info">
+              <div class="cert-title">API Fundamentals Student Expert</div>
+              <div class="cert-org">Postman</div>
+              <div class="cert-date">Issued Feb 2026</div>
+            </div>
           </div>
-          <div class="inv-item" title="TypeScript">
-            <div class="inv-icon">💙</div>
-            <span>TypeScript</span>
-          </div>
-          <div class="inv-item" title="React">
-            <div class="inv-icon">⚛️</div>
-            <span>React</span>
-          </div>
-          <div class="inv-item" title="FastAPI">
-            <div class="inv-icon">🚀</div>
-            <span>FastAPI</span>
-          </div>
-          <div class="inv-item" title="Figma">
-            <div class="inv-icon">🎨</div>
-            <span>Figma</span>
-          </div>
-          <div class="inv-item" title="Google Cloud">
-            <div class="inv-icon">☁️</div>
-            <span>GCP</span>
-          </div>
-          <div class="inv-item" title="IBM Watson">
-            <div class="inv-icon">🤖</div>
-            <span>IBM AI</span>
-          </div>
-          <div class="inv-item" title="SQL">
-            <div class="inv-icon">🗄️</div>
-            <span>SQL</span>
-          </div>
-          <div class="inv-item" title="Flutter">
-            <div class="inv-icon">📱</div>
-            <span>Flutter</span>
-          </div>
-          <div class="inv-item" title="Git">
-            <div class="inv-icon">📂</div>
-            <span>Git</span>
-          </div>
-          <div class="inv-item" title="Notion">
-            <div class="inv-icon">📝</div>
-            <span>Notion</span>
+          <div class="cert-item">
+            <div class="cert-icon">🗄️</div>
+            <div class="cert-info">
+              <div class="cert-title">IT Specialist: Databases</div>
+              <div class="cert-org">Certiport · Pearson VUE</div>
+              <div class="cert-date">Issued Aug 2025 · Expires Aug 2030</div>
+            </div>
           </div>
         </div>
       </div>
@@ -230,7 +179,7 @@
     <div class="section-header">
       <div class="section-tag">CHAPTER 02</div>
       <h2 class="section-title">Quest Board</h2>
-      <p class="section-subtitle">Projects I've completed on my journey ⚔️</p>
+      <p class="section-subtitle">Projects completed on my journey — all team-based collaborations ⚔️</p>
       <div class="section-divider"><span>◆ ─────── ◆ ─────── ◆</span></div>
     </div>
 
@@ -247,15 +196,16 @@
         </div>
         <div class="card-body">
           <div class="card-tags">
-            <span class="tag tag-ai">AI</span>
+            <span class="tag tag-ai">AI / IoT</span>
             <span class="tag tag-health">HealthTech</span>
             <span class="tag tag-research">Published</span>
+            <span class="tag tag-team">👥 Team</span>
           </div>
           <h3 class="card-title">TalkieBuddy</h3>
-          <p class="card-desc">An AI-powered communication assistant designed to support children with autism spectrum disorder. Published in SATESI 2025 journal conference.</p>
+          <p class="card-desc">A smart AI-powered doll for children with speech delay, using IoT and AI to provide adaptive verbal interaction and help parents track speech development.</p>
           <div class="card-stats">
-            <span>⭐ SATESI 2025</span>
-            <span>📄 PKM-KI Funded</span>
+            <span>SATESI 2025</span>
+            <span>PKM-KI Funded</span>
           </div>
         </div>
       </div>
@@ -273,19 +223,20 @@
           <div class="card-tags">
             <span class="tag tag-mobile">Mobile App</span>
             <span class="tag tag-ai">AI</span>
+            <span class="tag tag-team">👥 Team</span>
           </div>
           <h3 class="card-title">XiongMao</h3>
-          <p class="card-desc">A panda-themed mobile application leveraging AI features to create an engaging and interactive user experience.</p>
+          <p class="card-desc">A panda-themed mobile application with AI-powered features, combining delightful UX design with practical intelligent functionality.</p>
           <div class="card-stats">
-            <span>📱 Mobile</span>
-            <span>🐼 Cute UX</span>
+            <span>Mobile App</span>
+            <span>AI-Powered</span>
           </div>
         </div>
       </div>
 
       <!-- Kizuna -->
       <div class="project-card" id="projectKizuna" tabindex="0">
-        <div class="card-ribbon ribbon-pink">SOCIAL</div>
+        <div class="card-ribbon ribbon-pink">AI AGENT</div>
         <div class="card-img-wrap">
           <img src="assets/project_kizuna.png" alt="Kizuna" class="card-img" />
           <div class="card-img-overlay">
@@ -294,21 +245,22 @@
         </div>
         <div class="card-body">
           <div class="card-tags">
-            <span class="tag tag-social">Social</span>
-            <span class="tag tag-web">Web App</span>
+            <span class="tag tag-ai">Google ADK</span>
+            <span class="tag tag-web">Multi-Agent</span>
+            <span class="tag tag-team">👥 Team</span>
           </div>
           <h3 class="card-title">Kizuna</h3>
-          <p class="card-desc">A connection-focused platform inspired by the Japanese concept of bonds (絆). Built to strengthen community and meaningful relationships through technology.</p>
+          <p class="card-desc">An AI-powered productivity workspace built on Google ADK that turns natural-language requests into actions across Notion, Todoist, and Google Calendar via a multi-agent architecture.</p>
           <div class="card-stats">
-            <span>🤝 Community</span>
-            <span>✨ Meaningful UX</span>
+            <span>Google ADK</span>
+            <span>Multi-Agent AI</span>
           </div>
         </div>
       </div>
 
       <!-- Pavey -->
       <div class="project-card" id="projectPavey" tabindex="0">
-        <div class="card-ribbon ribbon-green">FINTECH</div>
+        <div class="card-ribbon ribbon-green">TRAVEL TECH</div>
         <div class="card-img-wrap">
           <img src="assets/project_pavey.png" alt="Pavey" class="card-img" />
           <div class="card-img-overlay">
@@ -317,15 +269,16 @@
         </div>
         <div class="card-body">
           <div class="card-tags">
-            <span class="tag tag-fin">FinTech</span>
-            <span class="tag tag-ai">AI Chatbot</span>
-            <span class="tag tag-web">Full-Stack</span>
+            <span class="tag tag-fin">Travel AI</span>
+            <span class="tag tag-ai">Gemini 2.0</span>
+            <span class="tag tag-web">PWA</span>
+            <span class="tag tag-team">👥 Team</span>
           </div>
           <h3 class="card-title">Pavey</h3>
-          <p class="card-desc">An intelligent financial management chatbot with real-time exchange rates, personalized budgeting advice, and AI-powered financial insights.</p>
+          <p class="card-desc">An AI travel platform that performs dynamic itinerary rerouting when weather or crowds disrupt plans. Uses Gemini 2.0 Flash, Cosine Similarity, OpenWeather API, and Google Places.</p>
           <div class="card-stats">
-            <span>💰 FinTech</span>
-            <span>🤖 AI Powered</span>
+            <span>React PWA</span>
+            <span>Pijak × IBM</span>
           </div>
         </div>
       </div>
@@ -338,7 +291,7 @@
     <div class="section-header">
       <div class="section-tag">CHAPTER 03</div>
       <h2 class="section-title">Quest Log</h2>
-      <p class="section-subtitle">My journey through experience & education 📖</p>
+      <p class="section-subtitle">My journey through experience and education 📖</p>
       <div class="section-divider"><span>◆ ─────── ◆ ─────── ◆</span></div>
     </div>
 
@@ -380,7 +333,7 @@
             <h4 class="quest-title">Google Student Ambassador</h4>
             <div class="quest-org">Google</div>
             <div class="quest-date">📅 Apr 2026 – Present</div>
-            <p class="quest-desc">Representing Google on campus, organizing tech events, workshops, and promoting Google developer products and communities.</p>
+            <p class="quest-desc">Representing Google on campus, organizing tech events and workshops, promoting Google developer products and communities.</p>
           </div>
         </div>
       </div>
@@ -410,7 +363,7 @@
             <h4 class="quest-title">AI Engineer Cohort</h4>
             <div class="quest-org">Pijak × IBM SkillsBuild</div>
             <div class="quest-date">📅 Feb 2026 – Present</div>
-            <p class="quest-desc">Intensive training in AI engineering, machine learning models, and IBM's enterprise AI toolset.</p>
+            <p class="quest-desc">Intensive training in AI engineering, machine learning models, and IBM's enterprise AI toolset through a structured cohort program.</p>
           </div>
         </div>
       </div>
@@ -421,7 +374,7 @@
     <div class="volunteer-section">
       <div class="quest-column-header" style="justify-content:center; margin-bottom:1.5rem;">
         <span class="quest-icon">🌟</span>
-        <h3>Volunteer & Leadership</h3>
+        <h3>Volunteer &amp; Leadership</h3>
       </div>
       <div class="volunteer-grid">
         <div class="vol-card">
@@ -462,7 +415,7 @@
         <div class="vol-card">
           <div class="vol-icon">📡</div>
           <div class="vol-info">
-            <div class="vol-title">Media & Communication</div>
+            <div class="vol-title">Media &amp; Communication</div>
             <div class="vol-org">HMPSSI UPH</div>
           </div>
         </div>
@@ -520,7 +473,10 @@
         <div class="trophy-icon">📄</div>
         <div class="achievement-badge">PUBLISHED</div>
         <h4 class="achievement-title">TalkieBuddy Journal</h4>
-        <p class="achievement-desc">Research paper on TalkieBuddy AI communication assistant published at SATESI 2025 international conference.</p>
+        <p class="achievement-desc">Research paper on TalkieBuddy published at SATESI 2025 international conference.</p>
+        <a href="https://doi.org/10.54259/satesi.v5i2.5769" target="_blank" rel="noopener" class="doi-link">
+          📎 doi: 10.54259/satesi.v5i2.5769
+        </a>
         <div class="achievement-stars">★★★★★</div>
       </div>
 
@@ -541,19 +497,25 @@
       <div class="contact-dialogue">
         <div class="npc-box">
           <div class="npc-avatar">
-            <img src="assets/pixel_avatar.png" alt="Charlene NPC" />
+            <img src="assets/pixel_avatar.png" alt="Charlene pixel avatar" />
           </div>
           <div class="npc-speech">
             <p>Ah, a traveler! You've reached the end of the quest log. Want to team up or just say hi? I'd love to hear from you! 💌</p>
             <div class="npc-options">
-              <a href="https://wa.me/6281360551399" target="_blank" class="npc-option" id="whatsappBtn">
+              <a href="https://wa.me/6281360551399" target="_blank" rel="noopener" class="npc-option" id="whatsappBtn">
                 <span>📱</span> WhatsApp Me
               </a>
-              <a href="https://instagram.com/siilvered" target="_blank" class="npc-option" id="instagramBtn">
-                <span>📸</span> @siilvered
+              <a href="https://instagram.com/siilvered" target="_blank" rel="noopener" class="npc-option" id="instagramBtn">
+                <span>📸</span> @siilvered — Instagram
               </a>
-              <a href="https://linkedin.com/in/siilvered" target="_blank" class="npc-option" id="linkedinBtn">
+              <a href="https://linkedin.com/in/siilvered" target="_blank" rel="noopener" class="npc-option" id="linkedinBtn">
                 <span>💼</span> LinkedIn
+              </a>
+              <a href="https://github.com/siilverred" target="_blank" rel="noopener" class="npc-option" id="githubBtn">
+                <span>🐙</span> github.com/siilverred
+              </a>
+              <a href="https://medium.com/@siilvered" target="_blank" rel="noopener" class="npc-option" id="mediumBtn">
+                <span>✍️</span> Medium — @siilvered
               </a>
             </div>
           </div>
@@ -576,7 +538,7 @@
             <textarea id="contactMessage" class="form-input form-textarea" placeholder="What's your quest?" required></textarea>
           </div>
           <button type="submit" class="btn-primary btn-full" id="submitBtn">
-            <span class="btn-icon">⚔️</span> SEND QUEST
+            ⚔️ SEND QUEST
           </button>
           <div class="form-success" id="formSuccess">
             ✨ Message sent! I'll reply soon, adventurer!
@@ -601,7 +563,13 @@
         <span class="pixel-bracket">]</span>
       </div>
       <p class="footer-quote">"Every expert was once a beginner." ✨</p>
-      <p class="footer-copy">© 2026 Charlene · Made with 💜 & pixels</p>
+      <div class="footer-socials">
+        <a href="https://github.com/siilverred" target="_blank" rel="noopener" class="footer-social-link">🐙 GitHub</a>
+        <a href="https://instagram.com/siilvered" target="_blank" rel="noopener" class="footer-social-link">📸 Instagram</a>
+        <a href="https://linkedin.com/in/siilvered" target="_blank" rel="noopener" class="footer-social-link">💼 LinkedIn</a>
+        <a href="https://medium.com/@siilvered" target="_blank" rel="noopener" class="footer-social-link">✍️ Medium</a>
+      </div>
+      <p class="footer-copy">© 2026 Charlene · Made with 💜 &amp; pixels</p>
     </div>
     <div class="footer-pixels bottom">
       <div class="pixel-row">
