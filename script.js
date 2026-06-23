@@ -6,7 +6,7 @@
 /* ─── PARTICLE SYSTEM ─── */
 function createParticles() {
   const container = document.getElementById('particles');
-  const colors = ['#b48ef0', '#d4b8f7', '#f0a8d0', '#a8e6d0', '#f5d06a', '#7ec8e3'];
+  const colors = ['#e55e5e', '#f2a6a6', '#f2a285', '#a8e6d0', '#f5d06a', '#7ec8e3'];
   const count = 30;
   
   for (let i = 0; i < count; i++) {
@@ -222,7 +222,7 @@ const projectData = {
     ],
     doi: 'https://doi.org/10.54259/satesi.v5i2.5769',
     tech: ['IoT Hardware', 'Python', 'AI / NLP', 'Mobile App', 'User-Centered Design'],
-    color: '#b48ef0',
+    color: '#e55e5e',
   },
   projectXiongMao: {
     title: 'XiongMao',
@@ -254,7 +254,7 @@ const projectData = {
     ],
     doi: null,
     tech: ['Google ADK', 'Python', 'Notion API', 'Todoist API', 'Google Calendar API'],
-    color: '#f0a8d0',
+    color: '#f2a285',
   },
   projectPavey: {
     title: 'Pavey',
@@ -389,12 +389,12 @@ function initGlitchEffect() {
   setInterval(() => {
     if (Math.random() < 0.05) {
       titleName.style.textShadow = `
-        ${Math.random() * 6 - 3}px 0 #f0a8d0,
+        ${Math.random() * 6 - 3}px 0 #f2a285,
         ${Math.random() * -6 + 3}px 0 #a8e6d0,
-        0 0 30px rgba(180, 142, 240, 0.7)
+        0 0 30px rgba(229, 94, 94, 0.7)
       `;
       setTimeout(() => {
-        titleName.style.textShadow = '0 0 30px rgba(180, 142, 240, 0.7)';
+        titleName.style.textShadow = '0 0 30px rgba(229, 94, 94, 0.7)';
       }, 100);
     }
   }, 500);
@@ -470,8 +470,8 @@ function showToast(msg) {
     bottom: 2rem; left: 50%;
     transform: translateX(-50%);
     background: var(--bg-card);
-    border: 2px solid var(--accent-purple);
-    color: var(--accent-lavender);
+    border: 2px solid var(--accent-red);
+    color: var(--accent-light-red);
     font-family: var(--pixel-font);
     font-size: 0.45rem;
     padding: 10px 20px;
@@ -506,6 +506,344 @@ function initExpBar() {
   observer.observe(expFill);
 }
 
+/* ─── INTERACTIVE PIXEL BUDDY LOGIC ─── */
+let audioCtx = null;
+let isMuted = false;
+
+function initAudio() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  if (audioCtx.state === 'suspended') {
+    audioCtx.resume();
+  }
+}
+
+function play8BitSound(frequencySequence, durations, type = 'sine') {
+  if (isMuted) return;
+  try {
+    initAudio();
+    if (!audioCtx) return;
+    
+    let time = audioCtx.currentTime;
+    
+    frequencySequence.forEach((freq, index) => {
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, time);
+      
+      gain.gain.setValueAtTime(0.06, time);
+      gain.gain.exponentialRampToValueAtTime(0.0001, time + durations[index]);
+      
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      
+      osc.start(time);
+      osc.stop(time + durations[index]);
+      
+      time += durations[index] * 0.85;
+    });
+  } catch (e) {
+    console.error("Audio synth error", e);
+  }
+}
+
+function playEatSound() {
+  play8BitSound([150, 300, 600], [0.08, 0.08, 0.15], 'triangle');
+}
+
+function playPetSound() {
+  play8BitSound([523.25, 783.99], [0.06, 0.12], 'sine');
+}
+
+function playLevelUpSound() {
+  play8BitSound([261.63, 329.63, 392.00, 523.25, 659.25, 783.99, 1046.50], [0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.25], 'triangle');
+}
+
+function playSadSound() {
+  play8BitSound([300, 200, 100], [0.12, 0.12, 0.25], 'sawtooth');
+}
+
+// Buddy States
+let buddyLvl = 1;
+let buddyExp = 0;
+let buddyMaxExp = 100;
+let buddyMinimized = false;
+
+// Physics loop variables
+let petX = 100;
+let petTargetX = 100;
+let petSpeed = 3;
+let activeFood = null;
+let activeSection = 'hero';
+
+const petPhrases = {
+  hero: "Hey there! Ready to start the quest? Scroll down! 📜",
+  about: "A LVL 20 AI Mage from UPH! Let's build! 🤖",
+  projects: "The Quest Board! So many awesome projects! ⚔️",
+  experience: "IT Staff, Google Student Ambassador! Impressive! 🌟",
+  awards: "PIMNAS 38 Finalist? Wow, look at those trophies! 🏆",
+  contact: "Send a message to start our next adventure! ✉️"
+};
+
+function showBubble(text) {
+  const bubble = document.getElementById('buddyBubble');
+  if (!bubble) return;
+  bubble.textContent = text;
+  bubble.classList.add('visible');
+  
+  clearTimeout(window.bubbleTimeout);
+  window.bubbleTimeout = setTimeout(() => {
+    bubble.classList.remove('visible');
+  }, 5000);
+}
+
+function updateBuddyUI() {
+  const lvlEl = document.getElementById('buddyLevelVal');
+  const goldEl = document.getElementById('buddyGoldVal');
+  const expFill = document.getElementById('buddyExpFill');
+  
+  if (lvlEl) lvlEl.textContent = `LVL ${buddyLvl}`;
+  if (goldEl) goldEl.textContent = `${buddyExp} / ${buddyMaxExp} EXP`;
+  if (expFill) expFill.style.width = `${(buddyExp / buddyMaxExp) * 100}%`;
+}
+
+function feedBuddy() {
+  if (activeFood) return;
+  
+  const screen = document.getElementById('buddyScreen');
+  if (!screen) return;
+  
+  const food = document.createElement('div');
+  food.className = 'buddy-food';
+  const foodTypes = ['🍪', '🧁', '🍩', '🍬', '⭐'];
+  food.textContent = foodTypes[Math.floor(Math.random() * foodTypes.length)];
+  
+  const spawnX = 15 + Math.random() * (234 - 30);
+  food.style.left = `${spawnX}px`;
+  food.style.top = `0px`;
+  screen.appendChild(food);
+  
+  activeFood = {
+    el: food,
+    x: spawnX,
+    y: 0,
+    vy: 1.5,
+    gravity: 0.15
+  };
+  
+  initAudio();
+}
+
+function petBuddy() {
+  const pet = document.getElementById('buddyPet');
+  if (!pet) return;
+  
+  playPetSound();
+  
+  pet.classList.remove('walk', 'happy');
+  pet.classList.add('jump');
+  showBubble("Aww, thanks! That feels great! ❤️");
+  
+  setTimeout(() => {
+    pet.classList.remove('jump');
+  }, 400);
+  
+  createFloatingText(petX + 16, 50, "+5 EXP");
+  gainExp(5);
+}
+
+function createFloatingText(x, y, text) {
+  const screen = document.getElementById('buddyScreen');
+  if (!screen) return;
+  
+  const txt = document.createElement('div');
+  txt.className = 'buddy-float-text';
+  txt.textContent = text;
+  txt.style.left = `${x}px`;
+  txt.style.top = `${y}px`;
+  screen.appendChild(txt);
+  
+  setTimeout(() => txt.remove(), 1000);
+}
+
+function gainExp(amount) {
+  buddyExp += amount;
+  if (buddyExp >= buddyMaxExp) {
+    buddyExp -= buddyMaxExp;
+    buddyLvl++;
+    buddyMaxExp = buddyLvl * 100;
+    
+    playLevelUpSound();
+    showBubble(`⭐ LEVEL UP! Now LVL ${buddyLvl}! ⭐`);
+    
+    const pet = document.getElementById('buddyPet');
+    if (pet) {
+      pet.classList.add('happy');
+      setTimeout(() => pet.classList.remove('happy'), 1500);
+    }
+    
+    createFloatingText(100, 30, "LEVEL UP!");
+  }
+  updateBuddyUI();
+  saveBuddyState();
+}
+
+function updatePhysics() {
+  const pet = document.getElementById('buddyPet');
+  if (!pet) return;
+  
+  if (activeFood) {
+    activeFood.vy += activeFood.gravity;
+    activeFood.y += activeFood.vy;
+    activeFood.el.style.top = `${activeFood.y}px`;
+    
+    petTargetX = activeFood.x - 10;
+    
+    if (activeFood.y >= 78) {
+      const petCenter = petX + 16;
+      const foodCenter = activeFood.x + 6;
+      
+      if (Math.abs(petCenter - foodCenter) < 22) {
+        playEatSound();
+        pet.classList.remove('walk');
+        pet.classList.add('jump');
+        setTimeout(() => pet.classList.remove('jump'), 400);
+        
+        createFloatingText(petX + 10, 40, "+20 EXP");
+        gainExp(20);
+        showBubble("Yum! Delicious! 🍪");
+      } else {
+        playSadSound();
+        createFloatingText(activeFood.x - 8, 70, "Miss...");
+        showBubble("Oh no, I missed it! 😢");
+      }
+      
+      activeFood.el.remove();
+      activeFood = null;
+      petTargetX = petX;
+    }
+  } else {
+    if (Math.random() < 0.005) {
+      petTargetX = Math.random() * (234 - 32);
+    }
+  }
+  
+  if (Math.abs(petX - petTargetX) > 2) {
+    const dir = petTargetX > petX ? 1 : -1;
+    petX += dir * petSpeed;
+    pet.style.left = `${petX}px`;
+    pet.classList.add('walk');
+    
+    if (dir > 0) {
+      pet.style.transform = 'scaleX(1)';
+    } else {
+      pet.style.transform = 'scaleX(-1)';
+    }
+  } else {
+    pet.classList.remove('walk');
+  }
+  
+  requestAnimationFrame(updatePhysics);
+}
+
+function loadBuddyState() {
+  const savedLvl = localStorage.getItem('buddyLvl');
+  const savedExp = localStorage.getItem('buddyExp');
+  const savedMute = localStorage.getItem('buddyMuted');
+  const savedMinimized = localStorage.getItem('buddyMinimized');
+  
+  if (savedLvl) buddyLvl = parseInt(savedLvl, 10);
+  if (savedExp) buddyExp = parseInt(savedExp, 10);
+  buddyMaxExp = buddyLvl * 100;
+  
+  if (savedMute === 'true') {
+    isMuted = true;
+    const muteBtn = document.getElementById('buddyMuteBtn');
+    if (muteBtn) muteBtn.textContent = '🔇';
+  }
+  if (savedMinimized === 'true') {
+    buddyMinimized = true;
+    const widget = document.getElementById('buddyWidget');
+    const toggleBtn = document.getElementById('buddyToggleBtn');
+    if (widget) widget.classList.add('minimized');
+    if (toggleBtn) toggleBtn.textContent = '🎮';
+  }
+  
+  updateBuddyUI();
+}
+
+function saveBuddyState() {
+  localStorage.setItem('buddyLvl', buddyLvl);
+  localStorage.setItem('buddyExp', buddyExp);
+  localStorage.setItem('buddyMuted', isMuted);
+  localStorage.setItem('buddyMinimized', buddyMinimized);
+}
+
+function initPixelBuddy() {
+  loadBuddyState();
+  
+  const toggleBtn = document.getElementById('buddyToggleBtn');
+  const widget = document.getElementById('buddyWidget');
+  if (toggleBtn && widget) {
+    toggleBtn.addEventListener('click', () => {
+      initAudio();
+      buddyMinimized = !buddyMinimized;
+      widget.classList.toggle('minimized', buddyMinimized);
+      toggleBtn.textContent = buddyMinimized ? '🎮' : '🤖';
+      saveBuddyState();
+    });
+  }
+  
+  const feedBtn = document.getElementById('buddyFeedBtn');
+  if (feedBtn) {
+    feedBtn.addEventListener('click', () => {
+      feedBuddy();
+    });
+  }
+  
+  const petBtn = document.getElementById('buddyPetBtn');
+  if (petBtn) {
+    petBtn.addEventListener('click', () => {
+      petBuddy();
+    });
+  }
+  
+  const muteBtn = document.getElementById('buddyMuteBtn');
+  if (muteBtn) {
+    muteBtn.addEventListener('click', () => {
+      isMuted = !isMuted;
+      muteBtn.textContent = isMuted ? '🔇' : '🔊';
+      saveBuddyState();
+    });
+  }
+  
+  window.addEventListener('scroll', () => {
+    const sections = ['hero', 'about', 'projects', 'experience', 'awards', 'contact'];
+    let currentSec = 'hero';
+    
+    sections.forEach(sec => {
+      const el = document.getElementById(sec);
+      if (el && window.scrollY >= el.offsetTop - 200) {
+        currentSec = sec;
+      }
+    });
+    
+    if (currentSec !== activeSection) {
+      activeSection = currentSec;
+      showBubble(petPhrases[currentSec]);
+    }
+  });
+  
+  setTimeout(() => {
+    showBubble("Hi adventurer! Feed me or scroll down to explore together!");
+  }, 1000);
+  
+  requestAnimationFrame(updatePhysics);
+}
+
 /* ─── INIT ALL ─── */
 document.addEventListener('DOMContentLoaded', () => {
   createParticles();
@@ -521,4 +859,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initAwardSparkles();
   initSectionReveal();
   initExpBar();
+  initPixelBuddy();
 });
